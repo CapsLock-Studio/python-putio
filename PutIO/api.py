@@ -41,7 +41,7 @@ class Files(base):
             data=kwargs
         ).json()
 
-    def get(self, id='', **kwargs):
+    def get(self, id=0, **kwargs):
         return self.to_u(
             path=[
                 id

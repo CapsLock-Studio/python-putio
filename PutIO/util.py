@@ -17,7 +17,3 @@ def urljoin(*args):
 
 def request(url, method='get', **kwargs):
     return getattr(requests, method)(url, **kwargs)
-
-
-def implode(data):
-    return ','.join(map(lambda x: x, data))
