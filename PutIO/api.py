@@ -10,13 +10,13 @@ class Files(base):
             query=kwargs
         ).req('get').json()
 
-    def search(self, query='', page_no=-1, **kwargs):
+    def search(self, **kwargs):
         return self.to_u(
             path=[
                 'search',
-                query,
+                kwargs.get('query'),
                 'page',
-                page_no
+                kwargs.get('page_no')
             ],
             query=kwargs
         ).req('get').json()
@@ -41,10 +41,10 @@ class Files(base):
             data=kwargs
         ).json()
 
-    def get(self, id=0, **kwargs):
+    def get(self, **kwargs):
         return self.to_u(
             path=[
-                id
+                kwargs.get('id')
             ],
             query=kwargs
         ).req('get').json()
@@ -77,10 +77,10 @@ class Files(base):
             data=kwargs
         ).json()
 
-    def convert_to_mp4(self, id=0, **kwargs):
+    def convert_to_mp4(self, **kwargs):
         return self.to_u(
             path=[
-                id,
+                kwargs.get('id'),
                 'mp4'
             ]
         ).req(
@@ -88,10 +88,10 @@ class Files(base):
             data=kwargs
         ).json()
 
-    def get_mp4_status(self, id=0):
+    def get_mp4_status(self, **kwargs):
         return self.to_u(
             path=[
-                id,
+                kwargs.get('id'),
                 'mp4'
             ]
         ).req('get').json()
@@ -127,10 +127,10 @@ class Files(base):
             ]
         ).req('get').json()
 
-    def shared_with(self, id=0):
+    def shared_with(self, **kwargs):
         return self.to_u(
             path=[
-                id,
+                kwargs.get('id'),
                 'shared-with'
             ]
         ).req('get').json()
@@ -143,19 +143,19 @@ class Files(base):
             ]
         ).req('get').json()
 
-    def download_subtitle(self, id=0, key='default'):
+    def download_subtitle(self, **kwargs):
         return self.to_u(
             path=[
-                id,
+                kwargs.get('id'),
                 'subtitles',
-                key
+                kwargs.get('key')
             ]
         ).req('get').to_s()
 
-    def hls_playlist(self, id=0):
+    def hls_playlist(self, **kwargs):
         return self.to_u(
             path=[
-                id,
+                kwargs.get('id'),
                 'hls',
                 'media.m3u8'
             ]
@@ -196,23 +196,21 @@ class Transfers(base):
             data=kwargs
         ).json()
 
-    def get(self, id=0):
+    def get(self, **kwargs):
         return self.to_u(
             path=[
-                id
+                kwargs.get('id')
             ]
         ).req('get').json()
 
-    def retry(self, id=0):
+    def retry(self, **kwargs):
         return self.to_u(
             path=[
                 'retry'
             ]
         ).req(
             'post',
-            data={
-                'id': id
-            }
+            data=kwargs
         )
 
     def cancel(self, **kwargs):
@@ -251,34 +249,34 @@ class Friends(base):
             ]
         ).req('get').json()
 
-    def send_request(self, username=''):
+    def send_request(self, **kwargs):
         return self.to_u(
             path=[
-                username,
+                kwargs.get('username'),
                 'request'
             ]
         ).req('post').json()
 
-    def approve(self, username=''):
+    def approve(self, **kwargs):
         return self.to_u(
             path=[
-                username,
+                kwargs.get('username'),
                 'approve'
             ]
         ).req('post').json()
 
-    def deny(self, username=''):
+    def deny(self, **kwargs):
         return self.to_u(
             path=[
-                username,
+                kwargs.get('username'),
                 'deny'
             ]
         ).req('post').json()
 
-    def unfriend(self, username=''):
+    def unfriend(self, **kwargs):
         return self.to_u(
             path=[
-                username,
+                kwargs.get('username'),
                 'unfriend'
             ]
         ).req('post').json()
