@@ -5,7 +5,9 @@ This is python-styled putio api. Follow this doc: [https://put.io/v2/docs/index.
 
 ## Install pip
     sudo easy_install pip
+
 or
+
     sudo apt-get install python-pip python-dev build-essential
 
 
