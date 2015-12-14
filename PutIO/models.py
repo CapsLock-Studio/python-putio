@@ -16,5 +16,8 @@ class base():
             _url = urljoin(_url, path_value)
         for query_key, query_value in query.items():
             _url = set_query_parameter(_url, query_key, query_value)
-        _url = set_query_parameter(_url, 'oauth_token', self.oauth_token)
+        try:
+            _url = set_query_parameter(_url, 'oauth_token', self.oauth_token)
+        except Exception:
+            pass
         return url(url=_url)
