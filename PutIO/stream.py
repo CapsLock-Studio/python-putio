@@ -12,7 +12,7 @@ class stream():
             '%s/%s' % (
                 save_path,
                 re.findall(
-                    'filename=["]*(.+)["]*',
+                    'filename=["]*([^"]+)["]*',
                     data.headers.get('content-disposition')
                 ).pop()
             ),
